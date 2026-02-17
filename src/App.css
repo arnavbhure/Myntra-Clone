@@ -258,7 +258,6 @@ a.action_container:link {
   font-size: 13px;
   line-height: 1.42857143;
 }
-
 .bag-page {
   width: 75%;
   margin-left: 12.5%;
@@ -314,14 +313,13 @@ a.action_container:link {
   letter-spacing: 1px;
   font-size: 14px;
   font-weight: 600;
-  border-radius: 2px;
+  border-radius: 0.3rem;
   border-width: 0px;
   padding: 10px 16px;
   background-color: rgb(255, 63, 108);
   color: rgb(255, 255, 255);
   cursor: pointer;
 }
-
 .bag-item-container {
   margin-bottom: 8px;
   background: #fff;
