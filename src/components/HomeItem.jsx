@@ -1,4 +1,18 @@
+import { useDispatch, useSelector } from "react-redux";
+import { bagSummaryActions } from "../store/BagSummarySlice";
+
 const HomeItems = ({ item }) => {
+  const dispatch = useDispatch();
+  const bagItems = useSelector((store) => store.bagSummary);
+  const elementFound = bagItems.includes(item.id);
+
+  const handleOnAddtoBag = () => {
+    dispatch(bagSummaryActions.addItemToBag(item.id));
+  };
+  const handleOnRemoveFromBag = () => {
+    dispatch(bagSummaryActions.removeItemToBag(item.id));
+  };
+
   return (
     <>
       <div className="item-container">
@@ -13,12 +27,22 @@ const HomeItems = ({ item }) => {
           <span className="original-price">Rs {item.original_price}</span>
           <span className="discount">({item.discount_percentage}% OFF)</span>
         </div>
-        <button
-          className="btn-add-bag"
-          onClick={() => console.log("Item Was Clicked")}
-        >
-          Add to Bag
-        </button>
+        {!elementFound ? (
+          <button
+            className="btn-add-bag btn btn-success"
+            onClick={handleOnAddtoBag}
+          >
+            Add to Bag
+          </button>
+        ) : (
+          <button
+            type="button"
+            className="btn btn-danger btn-add-bag"
+            onClick={handleOnRemoveFromBag}
+          >
+            Remove
+          </button>
+        )}
       </div>
     </>
   );

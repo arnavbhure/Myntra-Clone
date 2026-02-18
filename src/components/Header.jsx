@@ -2,8 +2,11 @@ import { IoPersonSharp } from "react-icons/io5";
 import { FiHeart } from "react-icons/fi";
 import { BsFillBagFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const bagitems = useSelector((store) => store.bagSummary);
+
   return (
     <header>
       <div className="logo_container">
@@ -46,7 +49,7 @@ const Header = () => {
         <Link className="action_container" to="/bag">
           <BsFillBagFill />
           <span className="action_name">Bag</span>
-          <span className="bag-item-count">0</span>
+          <span className="bag-item-count">{bagitems.length}</span>
         </Link>
       </div>
     </header>
